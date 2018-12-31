@@ -1,0 +1,25 @@
+// Generate by
+//   protoc fileservice.proto --go_out=plugins=grpc:.
+syntax = "proto3";
+
+package pkg;
+
+// The greeting service definition.
+service File {
+  rpc Upload (Chunk) returns (UploadResponse) {}
+  rpc UploadStream (stream Chunk) returns (UploadResponse) {}
+}
+
+message Metadata {
+  string name = 1;
+}
+
+// The request message containing the user's name.
+message Chunk {
+  bytes data = 1;
+  Metadata meta = 2;
+}
+
+message UploadResponse {
+// Empty request for future support
+}
